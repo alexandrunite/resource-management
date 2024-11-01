@@ -11,6 +11,33 @@ public class Customer {
     private String email;
     private String phoneNumber;
     private String address;
+    private double demand;
+    private double timeSensitivity;
+    private double costEfficiency;
+
+    public double getDemand() {
+        return demand;
+    }
+
+    public void setDemand(double demand) {
+        this.demand = demand;
+    }
+
+    public double getTimeSensitivity() {
+        return timeSensitivity;
+    }
+
+    public void setTimeSensitivity(double timeSensitivity) {
+        this.timeSensitivity = timeSensitivity;
+    }
+
+    public double getCostEfficiency() {
+        return costEfficiency;
+    }
+
+    public void setCostEfficiency(double costEfficiency) {
+        this.costEfficiency = costEfficiency;
+    }
 
     // Getters and Setters
     public String getId() { return id; }
