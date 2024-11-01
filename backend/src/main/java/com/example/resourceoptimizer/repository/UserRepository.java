@@ -1,4 +1,4 @@
-package com.example.resourceoptimizer;
+package com.example.resourceoptimizer.repository;
 
 import com.example.resourceoptimizer.User;
 import org.springframework.data.mongodb.repository.MongoRepository;

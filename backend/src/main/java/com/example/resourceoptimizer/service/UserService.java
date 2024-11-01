@@ -1,7 +1,7 @@
-package com.example.resourceoptimizer;
+package com.example.resourceoptimizer.service;
 
+import com.example.resourceoptimizer.repository.UserRepository;
 import com.example.resourceoptimizer.User;
-import com.example.resourceoptimizer.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

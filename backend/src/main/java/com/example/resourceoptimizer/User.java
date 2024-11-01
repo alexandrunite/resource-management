@@ -2,9 +2,8 @@ package com.example.resourceoptimizer;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import lombok.Data;
 
-import java.util.Set;
+import java.util.List;
 
 @Document(collection = "users")
 public class User {
