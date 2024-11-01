@@ -1,5 +1,6 @@
 package com.example.resourceoptimizer.controller;
 
+import com.example.resourceoptimizer.service.UserService;
 import com.example.resourceoptimizer.util.JwtUtil;
 import com.example.resourceoptimizer.model.LoginRequest;
 import com.example.resourceoptimizer.model.AuthentificationResponse;

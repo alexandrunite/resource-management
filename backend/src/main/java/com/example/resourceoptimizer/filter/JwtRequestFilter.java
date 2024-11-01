@@ -3,6 +3,7 @@ package com.example.resourceoptimizer.filter;
 import com.example.resourceoptimizer.service.UserService;
 import com.example.resourceoptimizer.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
@@ -25,7 +26,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     private JwtUtil jwtUtil;
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
         final String authorizationHeader = request.getHeader("Authorization");
 
@@ -41,12 +42,13 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             UserDetails userDetails = this.userService.loadUserByUsername(username);
 
             if (jwtUtil.validateToken(jwt, userDetails)) {
-                UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
-                        userDetails, null, userDetails.getAuthorities());
-                authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                SecurityContextHolder.getContext().setAuthentication(authToken);
+                UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
+                        new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+                usernamePasswordAuthenticationToken
+                        .setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
             }
         }
-        chain.doFilter(request, response);
+        filterChain.doFilter(request, response);
     }
 }
