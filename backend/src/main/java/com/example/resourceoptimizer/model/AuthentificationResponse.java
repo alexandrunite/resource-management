@@ -1,5 +1,8 @@
 package com.example.resourceoptimizer.model;
 
+import lombok.Getter;
+
+@Getter
 public class AuthentificationResponse {
     private final String jwt;
 
@@ -7,7 +10,4 @@ public class AuthentificationResponse {
         this.jwt = jwt;
     }
 
-    public String getJwt() {
-        return jwt;
-    }
 }
